@@ -8,6 +8,7 @@ import org.jetbrains.annotations.Nullable;
  * This implementation allows push, pop, move to front elements
  * in case list is not full yet.
  *
+ * @param <K> An element's key type to save in {@link Node}.
  * @param <V> An element's type to save in {@link Node}.
  */
 public class LinkedList<K, V> {
@@ -46,18 +47,10 @@ public class LinkedList<K, V> {
             return next;
         }
 
-        public void setNext(Node next) {
-            this.next = next;
-        }
-
         public @Nullable Node getPrev() {
             return prev;
         }
-
-        public void setPrev(Node prev) {
-            this.prev = prev;
-        }
-
+        
         public K getKey() {
             return key;
         }
