@@ -13,7 +13,7 @@ public interface API {
      * Gets posts {@link List} by specific {@code tag}.
      * Returns all posts count with specific tag within one-hour period {@code hoursAgo} ago.
      * <p>
-     * {@code tag} must be formatted as following regex: ^#[\w\s-]+$
+     * {@code tag} must be formatted as following regex: ^#[а-яА-Я\w\s-]+$
      * {@code hoursAgo} must be greater than or equals to {@code 1} and less
      * than or equals to {@code 24}.
      *

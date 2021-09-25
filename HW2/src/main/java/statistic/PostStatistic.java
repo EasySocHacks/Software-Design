@@ -25,7 +25,7 @@ public class PostStatistic {
     /**
      * Gets posts occurred count statistic by specific {@code tag}.
      * <p>
-     * {@code tag} must be formatted as following regex: ^#[\w\s-]+$
+     * {@code tag} must be formatted as following regex: ^#[а-яА-Я\w\s-]+$
      * {@code hoursAgo} must be greater than or equals to {@code 1} and less
      * than or equals to {@code 24}.
      *
