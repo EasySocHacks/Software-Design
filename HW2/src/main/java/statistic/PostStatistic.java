@@ -35,7 +35,7 @@ public class PostStatistic {
      * posts count in period from {@code i + 1} to {@code i} hours ago. The value must be not {@code null}.
      */
     public @NotNull List<Integer> getPostCountByTagForPeriod(@NotNull String tag, int hours) {
-        assert (tag.matches("^#[а-яА-я\\w\\s-]+$"));
+        assert (tag.matches("^#[а-яА-Я\\w\\s-]+$"));
         assert (1 <= hours);
         assert (hours <= 24);
 
