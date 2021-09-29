@@ -18,13 +18,13 @@ public class MinQueryServlet extends AbstractQueryServlet {
                 getDatabaseUtils().getStatement().executeQuery("SELECT * FROM PRODUCT ORDER BY PRICE LIMIT 1");
 
         HTMLPageBuilder htmlPageBuilder = new HTMLPageBuilder()
-                .addLine("<h1>Product with min price: </h1>");
+                .addBlock("h1","Product with min price: ");
 
         while (resultSet.next()) {
             String  name = resultSet.getString("name");
             int price  = resultSet.getInt("price");
 
-            htmlPageBuilder = htmlPageBuilder.addLine("%s\t%d</br>", name, price);
+            htmlPageBuilder = htmlPageBuilder.addLineWithBr("%s\t%d", name, price);
         }
 
         getHtmlResponseUtils().sendHTMLPage(htmlPageBuilder.build().getHtmlPage());

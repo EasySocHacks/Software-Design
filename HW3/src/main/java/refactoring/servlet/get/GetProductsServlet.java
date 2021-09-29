@@ -28,7 +28,7 @@ public class GetProductsServlet extends AbstractServlet {
             String  name = resultSet.getString("name");
             int price  = resultSet.getInt("price");
 
-            htmlPageBuilder = htmlPageBuilder.addLine("%s\t%d</br>", name, price);
+            htmlPageBuilder = htmlPageBuilder.addLineWithBr("%s\t%d", name, price);
         }
 
         htmlResponseUtils.sendHTMLPage(htmlPageBuilder.build().getHtmlPage());
