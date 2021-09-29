@@ -13,13 +13,21 @@ import java.sql.Statement;
  * @author akirakozov
  */
 public class QueryServlet extends HttpServlet {
+    private String databaseUrl = "jdbc:sqlite:test.db";
+
+    public QueryServlet() { }
+
+    public QueryServlet(String databaseUrl) {
+        this.databaseUrl = databaseUrl;
+    }
+
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
         String command = request.getParameter("command");
 
         if ("max".equals(command)) {
             try {
-                try (Connection c = DriverManager.getConnection("jdbc:sqlite:test.db")) {
+                try (Connection c = DriverManager.getConnection(databaseUrl)) {
                     Statement stmt = c.createStatement();
                     ResultSet rs = stmt.executeQuery("SELECT * FROM PRODUCT ORDER BY PRICE DESC LIMIT 1");
                     response.getWriter().println("<html><body>");

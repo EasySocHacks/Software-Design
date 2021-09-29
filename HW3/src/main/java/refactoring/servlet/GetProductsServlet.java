@@ -13,11 +13,18 @@ import java.sql.Statement;
  * @author akirakozov
  */
 public class GetProductsServlet extends HttpServlet {
+    private String databaseUrl = "jdbc:sqlite:test.db";
+
+    public GetProductsServlet() { }
+
+    public GetProductsServlet(String databaseUrl) {
+        this.databaseUrl = databaseUrl;
+    }
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
         try {
-            try (Connection c = DriverManager.getConnection("jdbc:sqlite:test.db")) {
+            try (Connection c = DriverManager.getConnection(databaseUrl)) {
                 Statement stmt = c.createStatement();
                 ResultSet rs = stmt.executeQuery("SELECT * FROM PRODUCT");
                 response.getWriter().println("<html><body>");
