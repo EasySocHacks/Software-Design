@@ -1,4 +1,6 @@
-package refactoring.servlet;
+package refactoring.servlet.add;
+
+import refactoring.servlet.AbstractServlet;
 
 import javax.servlet.http.HttpServletRequest;
 import java.io.PrintWriter;
@@ -16,7 +18,7 @@ public class AddProductServlet extends AbstractServlet {
     }
 
     @Override
-    void doGetMainLogic(HttpServletRequest request, PrintWriter printWriter) throws Exception {
+    public void doGetMainLogic(HttpServletRequest request, PrintWriter printWriter) throws Exception {
         String name = request.getParameter("name");
         long price = Long.parseLong(request.getParameter("price"));
 

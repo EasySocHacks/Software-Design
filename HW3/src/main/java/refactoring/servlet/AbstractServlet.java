@@ -46,5 +46,5 @@ public abstract class AbstractServlet extends HttpServlet {
         response.setStatus(HttpServletResponse.SC_OK);
     }
 
-    abstract void doGetMainLogic(HttpServletRequest request, PrintWriter printWriter) throws Exception;
+    public abstract void doGetMainLogic(HttpServletRequest request, PrintWriter printWriter) throws Exception;
 }

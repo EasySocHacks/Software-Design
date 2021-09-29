@@ -1,4 +1,6 @@
-package refactoring.servlet;
+package refactoring.servlet.get;
+
+import refactoring.servlet.AbstractServlet;
 
 import javax.servlet.http.HttpServletRequest;
 import java.io.PrintWriter;
@@ -17,7 +19,7 @@ public class GetProductsServlet extends AbstractServlet {
     }
 
     @Override
-    void doGetMainLogic(HttpServletRequest request, PrintWriter printWriter) throws Exception {
+    public void doGetMainLogic(HttpServletRequest request, PrintWriter printWriter) throws Exception {
         ResultSet resultSet = databaseUtils.getStatement().executeQuery("SELECT * FROM PRODUCT");
 
         printWriter.println("<html><body>");

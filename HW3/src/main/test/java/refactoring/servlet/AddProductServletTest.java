@@ -4,6 +4,7 @@ import base.BaseTest;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+import refactoring.servlet.add.AddProductServlet;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;

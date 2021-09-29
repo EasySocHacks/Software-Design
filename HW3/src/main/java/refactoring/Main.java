@@ -3,9 +3,9 @@ package refactoring;
 import org.eclipse.jetty.server.Server;
 import org.eclipse.jetty.servlet.ServletContextHandler;
 import org.eclipse.jetty.servlet.ServletHolder;
-import refactoring.servlet.AddProductServlet;
-import refactoring.servlet.GetProductsServlet;
-import refactoring.servlet.QueryServlet;
+import refactoring.servlet.add.AddProductServlet;
+import refactoring.servlet.get.GetProductsServlet;
+import refactoring.servlet.query.QueryServlet;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
