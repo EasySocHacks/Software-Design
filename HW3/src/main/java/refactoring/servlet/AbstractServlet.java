@@ -35,12 +35,14 @@ public abstract class AbstractServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
         try {
             doGetMainLogic(request, response);
-        } catch (RuntimeException e) {
+        } catch (Exception e) {
             try {
                 databaseUtils.close();
             } catch (SQLException ex) {
                 ex.printStackTrace();
             }
+
+            throw new RuntimeException(e);
         }
 
         response.setContentType("text/html");
@@ -48,5 +50,5 @@ public abstract class AbstractServlet extends HttpServlet {
         response.getWriter().println("OK");
     }
 
-    abstract void doGetMainLogic(HttpServletRequest request, HttpServletResponse response) throws RuntimeException;
+    abstract void doGetMainLogic(HttpServletRequest request, HttpServletResponse response) throws Exception;
 }
