@@ -1,7 +1,6 @@
 package api;
 
 import api.exception.APIException;
-import com.xebialabs.restito.semantics.Action;
 import com.xebialabs.restito.server.StubServer;
 import org.glassfish.grizzly.http.util.HttpStatus;
 import org.junit.Before;
