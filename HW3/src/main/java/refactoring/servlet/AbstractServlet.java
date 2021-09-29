@@ -43,7 +43,6 @@ public abstract class AbstractServlet extends HttpServlet {
 
         response.setContentType("text/html");
         response.setStatus(HttpServletResponse.SC_OK);
-        response.getWriter().println("OK");
     }
 
     abstract void doGetMainLogic(HttpServletRequest request, HttpServletResponse response) throws Exception;
