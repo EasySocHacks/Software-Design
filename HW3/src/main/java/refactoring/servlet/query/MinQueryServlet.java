@@ -13,12 +13,10 @@ public class MinQueryServlet extends AbstractQueryServlet {
     }
 
     @Override
-    ResultSet proceedQuery() throws Exception {
-        return getDatabaseUtils().getStatement().executeQuery("SELECT * FROM PRODUCT ORDER BY PRICE LIMIT 1");
-    }
+    void doMainLogic(HttpServletRequest request) throws Exception {
+        ResultSet resultSet =
+                getDatabaseUtils().getStatement().executeQuery("SELECT * FROM PRODUCT ORDER BY PRICE LIMIT 1");
 
-    @Override
-    void printResult(HttpServletRequest request, ResultSet resultSet) throws Exception {
         HTMLPageBuilder htmlPageBuilder = new HTMLPageBuilder()
                 .addLine("<h1>Product with min price: </h1>");
 

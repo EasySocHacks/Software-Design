@@ -13,12 +13,10 @@ public class CountQueryServlet extends AbstractQueryServlet {
     }
 
     @Override
-    ResultSet proceedQuery() throws Exception {
-        return getDatabaseUtils().getStatement().executeQuery("SELECT COUNT(*) FROM PRODUCT");
-    }
+    void doMainLogic(HttpServletRequest request) throws Exception {
+        ResultSet resultSet =
+                getDatabaseUtils().getStatement().executeQuery("SELECT COUNT(*) FROM PRODUCT");
 
-    @Override
-    void printResult(HttpServletRequest request, ResultSet resultSet) throws Exception {
         HTMLPageBuilder htmlPageBuilder = new HTMLPageBuilder()
                 .addLine("Number of products: ");
 

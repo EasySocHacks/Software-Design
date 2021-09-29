@@ -4,7 +4,6 @@ import refactoring.utils.DatabaseUtils;
 import refactoring.utils.html.HTMLResponseUtils;
 
 import javax.servlet.http.HttpServletRequest;
-import java.sql.ResultSet;
 
 public abstract class AbstractQueryServlet {
     private final DatabaseUtils databaseUtils;
@@ -15,15 +14,7 @@ public abstract class AbstractQueryServlet {
         this.htmlResponseUtils = htmlResponseUtils;
     }
 
-    abstract ResultSet proceedQuery() throws Exception;
-
-    abstract void printResult(HttpServletRequest request, ResultSet resultSet) throws Exception;
-
-    public void doMainLogic(HttpServletRequest request) throws Exception {
-        ResultSet resultSet = proceedQuery();
-
-        printResult(request, resultSet);
-    }
+    abstract void doMainLogic(HttpServletRequest request) throws Exception;
 
     public DatabaseUtils getDatabaseUtils() {
         return databaseUtils;
