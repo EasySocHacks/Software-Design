@@ -9,13 +9,17 @@ import java.io.IOException;
 import java.sql.SQLException;
 
 public abstract class AbstractServlet extends HttpServlet {
-    private String databaseUrl = "jdbc:sqlite:test.db";
-    private String user = "";
-    private String password = "";
-
     protected DatabaseUtils databaseUtils;
 
-    {
+    public AbstractServlet() {
+        try {
+            databaseUtils = new DatabaseUtils("jdbc:sqlite:test.db", "", "");
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public AbstractServlet(String databaseUrl, String user, String password) {
         try {
             databaseUtils = new DatabaseUtils(databaseUrl, user, password);
         } catch (SQLException e) {
@@ -23,26 +27,18 @@ public abstract class AbstractServlet extends HttpServlet {
         }
     }
 
-    public AbstractServlet() { }
-
-    public AbstractServlet(String databaseUrl, String user, String password) {
-        this.databaseUrl = databaseUrl;
-        this.user = user;
-        this.password = password;
-    }
-
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
         try {
             doGetMainLogic(request, response);
         } catch (Exception e) {
+            throw new RuntimeException(e);
+        } finally {
             try {
                 databaseUtils.close();
             } catch (SQLException ex) {
                 ex.printStackTrace();
             }
-
-            throw new RuntimeException(e);
         }
 
         response.setContentType("text/html");
