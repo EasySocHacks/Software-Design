@@ -53,7 +53,7 @@ public class QueryServlet extends HttpServlet {
             }
         } else if ("min".equals(command)) {
             try {
-                try (Connection c = DriverManager.getConnection("jdbc:sqlite:test.db")) {
+                try (Connection c = DriverManager.getConnection(databaseUrl, user, password)) {
                     Statement stmt = c.createStatement();
                     ResultSet rs = stmt.executeQuery("SELECT * FROM PRODUCT ORDER BY PRICE LIMIT 1");
                     response.getWriter().println("<html><body>");
@@ -75,7 +75,7 @@ public class QueryServlet extends HttpServlet {
             }
         } else if ("sum".equals(command)) {
             try {
-                try (Connection c = DriverManager.getConnection("jdbc:sqlite:test.db")) {
+                try (Connection c = DriverManager.getConnection(databaseUrl, user, password)) {
                     Statement stmt = c.createStatement();
                     ResultSet rs = stmt.executeQuery("SELECT SUM(price) FROM PRODUCT");
                     response.getWriter().println("<html><body>");
@@ -95,7 +95,7 @@ public class QueryServlet extends HttpServlet {
             }
         } else if ("count".equals(command)) {
             try {
-                try (Connection c = DriverManager.getConnection("jdbc:sqlite:test.db")) {
+                try (Connection c = DriverManager.getConnection(databaseUrl, user, password)) {
                     Statement stmt = c.createStatement();
                     ResultSet rs = stmt.executeQuery("SELECT COUNT(*) FROM PRODUCT");
                     response.getWriter().println("<html><body>");
