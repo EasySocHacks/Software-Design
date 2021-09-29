@@ -13,11 +13,15 @@ import java.sql.Statement;
  */
 public class AddProductServlet extends HttpServlet {
     private String databaseUrl = "jdbc:sqlite:test.db";
+    private String user = "";
+    private String password = "";
 
     public AddProductServlet() { }
 
-    public AddProductServlet(String databaseUrl) {
+    public AddProductServlet(String databaseUrl, String user, String password) {
         this.databaseUrl = databaseUrl;
+        this.user = user;
+        this.password = password;
     }
 
     @Override
@@ -26,7 +30,7 @@ public class AddProductServlet extends HttpServlet {
         long price = Long.parseLong(request.getParameter("price"));
 
         try {
-            try (Connection c = DriverManager.getConnection(databaseUrl)) {
+            try (Connection c = DriverManager.getConnection(databaseUrl, user, password)) {
                 String sql = "INSERT INTO PRODUCT " +
                         "(NAME, PRICE) VALUES (\"" + name + "\"," + price + ")";
                 Statement stmt = c.createStatement();

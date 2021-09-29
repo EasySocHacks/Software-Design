@@ -14,11 +14,15 @@ import java.sql.Statement;
  */
 public class QueryServlet extends HttpServlet {
     private String databaseUrl = "jdbc:sqlite:test.db";
+    private String user = "";
+    private String password = "";
 
     public QueryServlet() { }
 
-    public QueryServlet(String databaseUrl) {
+    public QueryServlet(String databaseUrl, String user, String password) {
         this.databaseUrl = databaseUrl;
+        this.user = user;
+        this.password = password;
     }
 
     @Override
@@ -27,7 +31,7 @@ public class QueryServlet extends HttpServlet {
 
         if ("max".equals(command)) {
             try {
-                try (Connection c = DriverManager.getConnection(databaseUrl)) {
+                try (Connection c = DriverManager.getConnection(databaseUrl, user, password)) {
                     Statement stmt = c.createStatement();
                     ResultSet rs = stmt.executeQuery("SELECT * FROM PRODUCT ORDER BY PRICE DESC LIMIT 1");
                     response.getWriter().println("<html><body>");
