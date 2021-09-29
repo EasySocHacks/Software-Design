@@ -79,13 +79,15 @@ public class GetProductsServletTest {
                     output.toString());
 
             verify(httpServletResponse).getWriter();
-            verify(printWriter).println("<html><body>");
-            verify(printWriter).println("A\t1</br>");
-            verify(printWriter).println("B\t1</br>");
-            verify(printWriter).println("C\t2</br>");
-            verify(printWriter).println("D\t5</br>");
-            verify(printWriter).println("NAME\t0</br>");
-            verify(printWriter).println("</body></html>");
+            verify(printWriter).println(
+                    "<html><body>\n" +
+                    "A\t1</br>\n" +
+                    "B\t1</br>\n" +
+                    "C\t2</br>\n" +
+                    "D\t5</br>\n" +
+                    "NAME\t0</br>\n" +
+                    "</body></html>"
+            );
             verify(httpServletResponse).setContentType("text/html");
             verify(httpServletResponse).setStatus(HttpServletResponse.SC_OK);
         } catch (SQLException | IOException e) {
@@ -104,8 +106,9 @@ public class GetProductsServletTest {
                     output.toString());
 
             verify(httpServletResponse).getWriter();
-            verify(printWriter).println("<html><body>");
-            verify(printWriter).println("</body></html>");
+            verify(printWriter).println(
+                    "<html><body>\n" +
+                    "</body></html>");
             verify(httpServletResponse).setContentType("text/html");
             verify(httpServletResponse).setStatus(HttpServletResponse.SC_OK);
         } catch (IOException e) {

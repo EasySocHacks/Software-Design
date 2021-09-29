@@ -1,14 +1,15 @@
 package refactoring.servlet.query;
 
 import refactoring.utils.DatabaseUtils;
+import refactoring.utils.html.HTMLPageBuilder;
+import refactoring.utils.html.HTMLResponseUtils;
 
 import javax.servlet.http.HttpServletRequest;
-import java.io.PrintWriter;
 import java.sql.ResultSet;
 
 public class MaxQueryServlet extends AbstractQueryServlet {
-    public MaxQueryServlet(DatabaseUtils databaseUtils) {
-        super(databaseUtils);
+    public MaxQueryServlet(DatabaseUtils databaseUtils, HTMLResponseUtils htmlResponseUtils) {
+        super(databaseUtils, htmlResponseUtils);
     }
 
     @Override
@@ -17,13 +18,17 @@ public class MaxQueryServlet extends AbstractQueryServlet {
     }
 
     @Override
-    void printResult(HttpServletRequest request, ResultSet resultSet, PrintWriter printWriter) throws Exception {
-        printWriter.println("<h1>Product with max price: </h1>");
+    void printResult(HttpServletRequest request, ResultSet resultSet) throws Exception {
+        HTMLPageBuilder htmlPageBuilder = new HTMLPageBuilder()
+                .addLine("<h1>Product with max price: </h1>");
 
         while (resultSet.next()) {
             String  name = resultSet.getString("name");
             int price  = resultSet.getInt("price");
-            printWriter.println(name + "\t" + price + "</br>");
+
+            htmlPageBuilder = htmlPageBuilder.addLine("%s\t%d</br>", name, price);
         }
+
+        getHtmlResponseUtils().sendHTMLPage(htmlPageBuilder.build().getHtmlPage());
     }
 }

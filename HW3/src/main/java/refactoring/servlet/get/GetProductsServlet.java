@@ -1,9 +1,9 @@
 package refactoring.servlet.get;
 
 import refactoring.servlet.AbstractServlet;
+import refactoring.utils.html.HTMLPageBuilder;
 
 import javax.servlet.http.HttpServletRequest;
-import java.io.PrintWriter;
 import java.sql.ResultSet;
 
 /**
@@ -19,16 +19,18 @@ public class GetProductsServlet extends AbstractServlet {
     }
 
     @Override
-    public void doGetMainLogic(HttpServletRequest request, PrintWriter printWriter) throws Exception {
+    public void doGetMainLogic(HttpServletRequest request) throws Exception {
         ResultSet resultSet = databaseUtils.getStatement().executeQuery("SELECT * FROM PRODUCT");
 
-        printWriter.println("<html><body>");
+        HTMLPageBuilder htmlPageBuilder = new HTMLPageBuilder();
 
         while (resultSet.next()) {
             String  name = resultSet.getString("name");
             int price  = resultSet.getInt("price");
-            printWriter.println(name + "\t" + price + "</br>");
+
+            htmlPageBuilder = htmlPageBuilder.addLine("%s\t%d</br>", name, price);
         }
-        printWriter.println("</body></html>");
+
+        htmlResponseUtils.sendHTMLPage(htmlPageBuilder.build().getHtmlPage());
     }
 }

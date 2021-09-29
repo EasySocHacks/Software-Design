@@ -3,7 +3,6 @@ package refactoring.servlet.query;
 import refactoring.servlet.AbstractServlet;
 
 import javax.servlet.http.HttpServletRequest;
-import java.io.PrintWriter;
 
 /**
  * @author akirakozov
@@ -20,24 +19,24 @@ public class QueryServlet extends AbstractServlet {
     }
 
     @Override
-    public void doGetMainLogic(HttpServletRequest request, PrintWriter printWriter) throws Exception {
+    public void doGetMainLogic(HttpServletRequest request) throws Exception {
         String command = request.getParameter("command");
 
         switch (command) {
             case "max":
-                queryServletFactory.max(databaseUtils).doMainLogic(request, printWriter);
+                queryServletFactory.max(databaseUtils, htmlResponseUtils).doMainLogic(request);
                 break;
             case "min":
-                queryServletFactory.min(databaseUtils).doMainLogic(request, printWriter);
+                queryServletFactory.min(databaseUtils, htmlResponseUtils).doMainLogic(request);
                 break;
             case "sum":
-                queryServletFactory.sum(databaseUtils).doMainLogic(request, printWriter);
+                queryServletFactory.sum(databaseUtils, htmlResponseUtils).doMainLogic(request);
                 break;
             case "count":
-                queryServletFactory.count(databaseUtils).doMainLogic(request, printWriter);
+                queryServletFactory.count(databaseUtils, htmlResponseUtils).doMainLogic(request);
                 break;
             default:
-                printWriter.println("Unknown command: " + command);
+                htmlResponseUtils.sendMessage("Unknown command: %s", command);
                 break;
         }
     }

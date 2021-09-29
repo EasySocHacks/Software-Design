@@ -3,7 +3,6 @@ package refactoring.servlet.add;
 import refactoring.servlet.AbstractServlet;
 
 import javax.servlet.http.HttpServletRequest;
-import java.io.PrintWriter;
 
 /**
  * @author akirakozov
@@ -18,7 +17,7 @@ public class AddProductServlet extends AbstractServlet {
     }
 
     @Override
-    public void doGetMainLogic(HttpServletRequest request, PrintWriter printWriter) throws Exception {
+    public void doGetMainLogic(HttpServletRequest request) throws Exception {
         String name = request.getParameter("name");
         long price = Long.parseLong(request.getParameter("price"));
 
@@ -26,6 +25,6 @@ public class AddProductServlet extends AbstractServlet {
                 "INSERT INTO PRODUCT (NAME, PRICE) VALUES " +
                         "('" + name + "'," + price + ")");
 
-        printWriter.println("OK");
+        htmlResponseUtils.sendMessage("OK");
     }
 }

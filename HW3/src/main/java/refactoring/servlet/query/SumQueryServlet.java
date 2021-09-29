@@ -1,14 +1,15 @@
 package refactoring.servlet.query;
 
 import refactoring.utils.DatabaseUtils;
+import refactoring.utils.html.HTMLPageBuilder;
+import refactoring.utils.html.HTMLResponseUtils;
 
 import javax.servlet.http.HttpServletRequest;
-import java.io.PrintWriter;
 import java.sql.ResultSet;
 
 public class SumQueryServlet extends AbstractQueryServlet {
-    public SumQueryServlet(DatabaseUtils databaseUtils) {
-        super(databaseUtils);
+    public SumQueryServlet(DatabaseUtils databaseUtils, HTMLResponseUtils htmlResponseUtils) {
+        super(databaseUtils, htmlResponseUtils);
     }
 
     @Override
@@ -17,11 +18,14 @@ public class SumQueryServlet extends AbstractQueryServlet {
     }
 
     @Override
-    void printResult(HttpServletRequest request, ResultSet resultSet, PrintWriter printWriter) throws Exception {
-        printWriter.println("Summary price: ");
+    void printResult(HttpServletRequest request, ResultSet resultSet) throws Exception {
+        HTMLPageBuilder htmlPageBuilder = new HTMLPageBuilder()
+                .addLine("Summary price: ");
 
         if (resultSet.next()) {
-            printWriter.println(resultSet.getInt(1));
+            htmlPageBuilder = htmlPageBuilder.addLine("%d", resultSet.getInt(1));
         }
+
+        getHtmlResponseUtils().sendHTMLPage(htmlPageBuilder.build().getHtmlPage());
     }
 }

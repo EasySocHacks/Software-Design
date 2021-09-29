@@ -35,11 +35,6 @@ public class QueryServletTest {
             output.append(System.lineSeparator());
             return null;
         }).when(printWriter).println(anyString());
-        doAnswer(invocation -> {
-            output.append(invocation.getArguments()[0]);
-            output.append(System.lineSeparator());
-            return null;
-        }).when(printWriter).println(anyInt());
 
         queryServlet = new QueryServlet(
                 "jdbc:h2:mem:myDb;DB_CLOSE_DELAY=-1",
@@ -85,10 +80,12 @@ public class QueryServletTest {
 
         verify(httpServletRequest).getParameter("command");
         verify(httpServletResponse).getWriter();
-        verify(printWriter).println("<html><body>");
-        verify(printWriter).println("<h1>Product with max price: </h1>");
-        verify(printWriter).println("D\t5</br>");
-        verify(printWriter).println("</body></html>");
+        verify(printWriter).println(
+                "<html><body>\n" +
+                "<h1>Product with max price: </h1>\n" +
+                "D\t5</br>\n" +
+                "</body></html>"
+        );
         verify(httpServletResponse).setContentType("text/html");
         verify(httpServletResponse).setStatus(HttpServletResponse.SC_OK);
     }
@@ -120,10 +117,12 @@ public class QueryServletTest {
 
         verify(httpServletRequest).getParameter("command");
         verify(httpServletResponse).getWriter();
-        verify(printWriter).println("<html><body>");
-        verify(printWriter).println("<h1>Product with max price: </h1>");
-        verify(printWriter).println("B\t5</br>");
-        verify(printWriter).println("</body></html>");
+        verify(printWriter).println(
+                "<html><body>\n" +
+                "<h1>Product with max price: </h1>\n" +
+                "B\t5</br>\n" +
+                "</body></html>"
+        );
         verify(httpServletResponse).setContentType("text/html");
         verify(httpServletResponse).setStatus(HttpServletResponse.SC_OK);
     }
@@ -151,10 +150,12 @@ public class QueryServletTest {
 
         verify(httpServletRequest).getParameter("command");
         verify(httpServletResponse).getWriter();
-        verify(printWriter).println("<html><body>");
-        verify(printWriter).println("<h1>Product with max price: </h1>");
-        verify(printWriter).println("A\t1</br>");
-        verify(printWriter).println("</body></html>");
+        verify(printWriter).println(
+                "<html><body>\n" +
+                "<h1>Product with max price: </h1>\n" +
+                "A\t1</br>\n" +
+                "</body></html>"
+        );
         verify(httpServletResponse).setContentType("text/html");
         verify(httpServletResponse).setStatus(HttpServletResponse.SC_OK);
     }
@@ -177,9 +178,11 @@ public class QueryServletTest {
 
         verify(httpServletRequest).getParameter("command");
         verify(httpServletResponse).getWriter();
-        verify(printWriter).println("<html><body>");
-        verify(printWriter).println("<h1>Product with max price: </h1>");
-        verify(printWriter).println("</body></html>");
+        verify(printWriter).println(
+                "<html><body>\n" +
+                "<h1>Product with max price: </h1>\n" +
+                "</body></html>"
+        );
         verify(httpServletResponse).setContentType("text/html");
         verify(httpServletResponse).setStatus(HttpServletResponse.SC_OK);
     }
@@ -229,10 +232,12 @@ public class QueryServletTest {
 
         verify(httpServletRequest).getParameter("command");
         verify(httpServletResponse).getWriter();
-        verify(printWriter).println("<html><body>");
-        verify(printWriter).println("<h1>Product with min price: </h1>");
-        verify(printWriter).println("NAME\t0</br>");
-        verify(printWriter).println("</body></html>");
+        verify(printWriter).println(
+                "<html><body>\n" +
+                "<h1>Product with min price: </h1>\n" +
+                "NAME\t0</br>\n" +
+                "</body></html>"
+        );
         verify(httpServletResponse).setContentType("text/html");
         verify(httpServletResponse).setStatus(HttpServletResponse.SC_OK);
     }
@@ -264,10 +269,12 @@ public class QueryServletTest {
 
         verify(httpServletRequest).getParameter("command");
         verify(httpServletResponse).getWriter();
-        verify(printWriter).println("<html><body>");
-        verify(printWriter).println("<h1>Product with min price: </h1>");
-        verify(printWriter).println("B\t2</br>");
-        verify(printWriter).println("</body></html>");
+        verify(printWriter).println(
+                "<html><body>\n" +
+                "<h1>Product with min price: </h1>\n" +
+                "B\t2</br>\n" +
+                "</body></html>"
+        );
         verify(httpServletResponse).setContentType("text/html");
         verify(httpServletResponse).setStatus(HttpServletResponse.SC_OK);
     }
@@ -295,10 +302,12 @@ public class QueryServletTest {
 
         verify(httpServletRequest).getParameter("command");
         verify(httpServletResponse).getWriter();
-        verify(printWriter).println("<html><body>");
-        verify(printWriter).println("<h1>Product with min price: </h1>");
-        verify(printWriter).println("A\t1</br>");
-        verify(printWriter).println("</body></html>");
+        verify(printWriter).println(
+                "<html><body>\n" +
+                "<h1>Product with min price: </h1>\n" +
+                "A\t1</br>\n" +
+                "</body></html>"
+        );
         verify(httpServletResponse).setContentType("text/html");
         verify(httpServletResponse).setStatus(HttpServletResponse.SC_OK);
     }
@@ -321,9 +330,11 @@ public class QueryServletTest {
 
         verify(httpServletRequest).getParameter("command");
         verify(httpServletResponse).getWriter();
-        verify(printWriter).println("<html><body>");
-        verify(printWriter).println("<h1>Product with min price: </h1>");
-        verify(printWriter).println("</body></html>");
+        verify(printWriter).println(
+                "<html><body>\n" +
+                "<h1>Product with min price: </h1>\n" +
+                "</body></html>"
+        );
         verify(httpServletResponse).setContentType("text/html");
         verify(httpServletResponse).setStatus(HttpServletResponse.SC_OK);
     }
@@ -373,10 +384,12 @@ public class QueryServletTest {
 
         verify(httpServletRequest).getParameter("command");
         verify(httpServletResponse).getWriter();
-        verify(printWriter).println("<html><body>");
-        verify(printWriter).println("Summary price: ");
-        verify(printWriter).println(100);
-        verify(printWriter).println("</body></html>");
+        verify(printWriter).println(
+                "<html><body>\n" +
+                "Summary price: \n" +
+                "100\n" +
+                "</body></html>"
+        );
         verify(httpServletResponse).setContentType("text/html");
         verify(httpServletResponse).setStatus(HttpServletResponse.SC_OK);
     }
@@ -400,10 +413,12 @@ public class QueryServletTest {
 
         verify(httpServletRequest).getParameter("command");
         verify(httpServletResponse).getWriter();
-        verify(printWriter).println("<html><body>");
-        verify(printWriter).println("Summary price: ");
-        verify(printWriter).println(0);
-        verify(printWriter).println("</body></html>");
+        verify(printWriter).println(
+                "<html><body>\n" +
+                "Summary price: \n" +
+                "0\n" +
+                "</body></html>"
+        );
         verify(httpServletResponse).setContentType("text/html");
         verify(httpServletResponse).setStatus(HttpServletResponse.SC_OK);
     }
@@ -453,10 +468,12 @@ public class QueryServletTest {
 
         verify(httpServletRequest).getParameter("command");
         verify(httpServletResponse).getWriter();
-        verify(printWriter).println("<html><body>");
-        verify(printWriter).println("Number of products: ");
-        verify(printWriter).println(5);
-        verify(printWriter).println("</body></html>");
+        verify(printWriter).println(
+                "<html><body>\n" +
+                "Number of products: \n" +
+                "5\n" +
+                "</body></html>"
+        );
         verify(httpServletResponse).setContentType("text/html");
         verify(httpServletResponse).setStatus(HttpServletResponse.SC_OK);
     }
@@ -480,10 +497,12 @@ public class QueryServletTest {
 
         verify(httpServletRequest).getParameter("command");
         verify(httpServletResponse).getWriter();
-        verify(printWriter).println("<html><body>");
-        verify(printWriter).println("Number of products: ");
-        verify(printWriter).println(0);
-        verify(printWriter).println("</body></html>");
+        verify(printWriter).println(
+                "<html><body>\n" +
+                "Number of products: \n" +
+                "0\n" +
+                "</body></html>"
+        );
         verify(httpServletResponse).setContentType("text/html");
         verify(httpServletResponse).setStatus(HttpServletResponse.SC_OK);
     }
