@@ -23,5 +23,7 @@ public class AddProductServlet extends AbstractServlet {
         databaseUtils.getStatement().executeUpdate(
                 "INSERT INTO PRODUCT (NAME, PRICE) VALUES " +
                         "('" + name + "'," + price + ")");
+
+        response.getWriter().println("OK");
     }
 }
