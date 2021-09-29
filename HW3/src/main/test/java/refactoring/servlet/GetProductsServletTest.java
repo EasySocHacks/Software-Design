@@ -77,7 +77,7 @@ public class GetProductsServletTest {
                             "</body></html>\n",
                     output.toString());
 
-            verify(httpServletResponse, times(7)).getWriter();
+            verify(httpServletResponse).getWriter();
             verify(printWriter).println("<html><body>");
             verify(printWriter).println("A\t1</br>");
             verify(printWriter).println("B\t1</br>");
@@ -102,7 +102,7 @@ public class GetProductsServletTest {
                             "</body></html>\n",
                     output.toString());
 
-            verify(httpServletResponse, times(2)).getWriter();
+            verify(httpServletResponse).getWriter();
             verify(printWriter).println("<html><body>");
             verify(printWriter).println("</body></html>");
             verify(httpServletResponse).setContentType("text/html");

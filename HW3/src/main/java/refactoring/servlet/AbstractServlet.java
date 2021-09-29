@@ -6,6 +6,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.sql.SQLException;
 
 public abstract class AbstractServlet extends HttpServlet {
@@ -30,7 +31,7 @@ public abstract class AbstractServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
         try {
-            doGetMainLogic(request, response);
+            doGetMainLogic(request, response.getWriter());
         } catch (Exception e) {
             throw new RuntimeException(e);
         } finally {
@@ -45,5 +46,5 @@ public abstract class AbstractServlet extends HttpServlet {
         response.setStatus(HttpServletResponse.SC_OK);
     }
 
-    abstract void doGetMainLogic(HttpServletRequest request, HttpServletResponse response) throws Exception;
+    abstract void doGetMainLogic(HttpServletRequest request, PrintWriter printWriter) throws Exception;
 }

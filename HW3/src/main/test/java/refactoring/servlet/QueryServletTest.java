@@ -83,7 +83,7 @@ public class QueryServletTest {
                 output.toString());
 
         verify(httpServletRequest).getParameter("command");
-        verify(httpServletResponse, times(4)).getWriter();
+        verify(httpServletResponse).getWriter();
         verify(printWriter).println("<html><body>");
         verify(printWriter).println("<h1>Product with max price: </h1>");
         verify(printWriter).println("D\t5</br>");
@@ -118,7 +118,7 @@ public class QueryServletTest {
                 output.toString());
 
         verify(httpServletRequest).getParameter("command");
-        verify(httpServletResponse, times(4)).getWriter();
+        verify(httpServletResponse).getWriter();
         verify(printWriter).println("<html><body>");
         verify(printWriter).println("<h1>Product with max price: </h1>");
         verify(printWriter).println("B\t5</br>");
@@ -149,7 +149,7 @@ public class QueryServletTest {
                 output.toString());
 
         verify(httpServletRequest).getParameter("command");
-        verify(httpServletResponse, times(4)).getWriter();
+        verify(httpServletResponse).getWriter();
         verify(printWriter).println("<html><body>");
         verify(printWriter).println("<h1>Product with max price: </h1>");
         verify(printWriter).println("A\t1</br>");
@@ -175,7 +175,7 @@ public class QueryServletTest {
                 output.toString());
 
         verify(httpServletRequest).getParameter("command");
-        verify(httpServletResponse, times(3)).getWriter();
+        verify(httpServletResponse).getWriter();
         verify(printWriter).println("<html><body>");
         verify(printWriter).println("<h1>Product with max price: </h1>");
         verify(printWriter).println("</body></html>");
@@ -184,7 +184,7 @@ public class QueryServletTest {
     }
 
     @Test(expected = RuntimeException.class)
-    public void maxQueryWithNoDatabaseTest() {
+    public void maxQueryWithNoDatabaseTest() throws IOException {
         when(httpServletRequest.getParameter("command")).thenReturn("max");
 
         try {
@@ -195,6 +195,7 @@ public class QueryServletTest {
             fail();
         } finally {
             verify(httpServletRequest).getParameter("command");
+            verify(httpServletResponse).getWriter();
         }
 
         fail();
@@ -226,7 +227,7 @@ public class QueryServletTest {
                 output.toString());
 
         verify(httpServletRequest).getParameter("command");
-        verify(httpServletResponse, times(4)).getWriter();
+        verify(httpServletResponse).getWriter();
         verify(printWriter).println("<html><body>");
         verify(printWriter).println("<h1>Product with min price: </h1>");
         verify(printWriter).println("NAME\t0</br>");
@@ -261,7 +262,7 @@ public class QueryServletTest {
                 output.toString());
 
         verify(httpServletRequest).getParameter("command");
-        verify(httpServletResponse, times(4)).getWriter();
+        verify(httpServletResponse).getWriter();
         verify(printWriter).println("<html><body>");
         verify(printWriter).println("<h1>Product with min price: </h1>");
         verify(printWriter).println("B\t2</br>");
@@ -292,7 +293,7 @@ public class QueryServletTest {
                 output.toString());
 
         verify(httpServletRequest).getParameter("command");
-        verify(httpServletResponse, times(4)).getWriter();
+        verify(httpServletResponse).getWriter();
         verify(printWriter).println("<html><body>");
         verify(printWriter).println("<h1>Product with min price: </h1>");
         verify(printWriter).println("A\t1</br>");
@@ -318,7 +319,7 @@ public class QueryServletTest {
                 output.toString());
 
         verify(httpServletRequest).getParameter("command");
-        verify(httpServletResponse, times(3)).getWriter();
+        verify(httpServletResponse).getWriter();
         verify(printWriter).println("<html><body>");
         verify(printWriter).println("<h1>Product with min price: </h1>");
         verify(printWriter).println("</body></html>");
@@ -327,7 +328,7 @@ public class QueryServletTest {
     }
 
     @Test(expected = RuntimeException.class)
-    public void minQueryWithNoDatabaseTest() {
+    public void minQueryWithNoDatabaseTest() throws IOException {
         when(httpServletRequest.getParameter("command")).thenReturn("min");
 
         try {
@@ -338,6 +339,7 @@ public class QueryServletTest {
             fail();
         } finally {
             verify(httpServletRequest).getParameter("command");
+            verify(httpServletResponse).getWriter();
         }
 
         fail();
@@ -369,7 +371,7 @@ public class QueryServletTest {
                 output.toString());
 
         verify(httpServletRequest).getParameter("command");
-        verify(httpServletResponse, times(4)).getWriter();
+        verify(httpServletResponse).getWriter();
         verify(printWriter).println("<html><body>");
         verify(printWriter).println("Summary price: ");
         verify(printWriter).println(100);
@@ -396,7 +398,7 @@ public class QueryServletTest {
                 output.toString());
 
         verify(httpServletRequest).getParameter("command");
-        verify(httpServletResponse, times(4)).getWriter();
+        verify(httpServletResponse).getWriter();
         verify(printWriter).println("<html><body>");
         verify(printWriter).println("Summary price: ");
         verify(printWriter).println(0);
@@ -406,7 +408,7 @@ public class QueryServletTest {
     }
 
     @Test(expected = RuntimeException.class)
-    public void sumQueryWithNoDatabaseTest() {
+    public void sumQueryWithNoDatabaseTest() throws IOException {
         when(httpServletRequest.getParameter("command")).thenReturn("sum");
 
         try {
@@ -417,6 +419,7 @@ public class QueryServletTest {
             fail();
         } finally {
             verify(httpServletRequest).getParameter("command");
+            verify(httpServletResponse).getWriter();
         }
 
         fail();
@@ -448,7 +451,7 @@ public class QueryServletTest {
                 output.toString());
 
         verify(httpServletRequest).getParameter("command");
-        verify(httpServletResponse, times(4)).getWriter();
+        verify(httpServletResponse).getWriter();
         verify(printWriter).println("<html><body>");
         verify(printWriter).println("Number of products: ");
         verify(printWriter).println(5);
@@ -475,7 +478,7 @@ public class QueryServletTest {
                 output.toString());
 
         verify(httpServletRequest).getParameter("command");
-        verify(httpServletResponse, times(4)).getWriter();
+        verify(httpServletResponse).getWriter();
         verify(printWriter).println("<html><body>");
         verify(printWriter).println("Number of products: ");
         verify(printWriter).println(0);
@@ -485,7 +488,7 @@ public class QueryServletTest {
     }
 
     @Test(expected = RuntimeException.class)
-    public void countQueryWithNoDatabaseTest() {
+    public void countQueryWithNoDatabaseTest() throws IOException {
         when(httpServletRequest.getParameter("command")).thenReturn("count");
 
         try {
@@ -496,6 +499,7 @@ public class QueryServletTest {
             fail();
         } finally {
             verify(httpServletRequest).getParameter("command");
+            verify(httpServletResponse).getWriter();
         }
 
         fail();
@@ -516,7 +520,7 @@ public class QueryServletTest {
                 output.toString());
 
         verify(httpServletRequest).getParameter("command");
-        verify(httpServletResponse, times(1)).getWriter();
+        verify(httpServletResponse).getWriter();
         verify(printWriter).println("Unknown command: query");
         verify(httpServletResponse).setContentType("text/html");
         verify(httpServletResponse).setStatus(HttpServletResponse.SC_OK);

@@ -123,7 +123,7 @@ public class AddProductServletTest {
     }
 
     @Test(expected = RuntimeException.class)
-    public void addProductWithNoDatabaseTest() {
+    public void addProductWithNoDatabaseTest() throws IOException {
         try {
             baseTest.getStatement().execute("drop table product");
 
@@ -133,6 +133,7 @@ public class AddProductServletTest {
         } finally {
             verify(httpServletRequest).getParameter("name");
             verify(httpServletRequest).getParameter("price");
+            verify(httpServletResponse).getWriter();
         }
 
         fail();

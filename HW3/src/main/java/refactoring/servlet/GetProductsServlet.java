@@ -1,7 +1,7 @@
 package refactoring.servlet;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import java.io.PrintWriter;
 import java.sql.ResultSet;
 
 /**
@@ -17,16 +17,16 @@ public class GetProductsServlet extends AbstractServlet {
     }
 
     @Override
-    void doGetMainLogic(HttpServletRequest request, HttpServletResponse response) throws Exception {
+    void doGetMainLogic(HttpServletRequest request, PrintWriter printWriter) throws Exception {
         ResultSet resultSet = databaseUtils.getStatement().executeQuery("SELECT * FROM PRODUCT");
 
-        response.getWriter().println("<html><body>");
+        printWriter.println("<html><body>");
 
         while (resultSet.next()) {
             String  name = resultSet.getString("name");
             int price  = resultSet.getInt("price");
-            response.getWriter().println(name + "\t" + price + "</br>");
+            printWriter.println(name + "\t" + price + "</br>");
         }
-        response.getWriter().println("</body></html>");
+        printWriter.println("</body></html>");
     }
 }
