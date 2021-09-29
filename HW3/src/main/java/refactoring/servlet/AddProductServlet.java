@@ -32,7 +32,7 @@ public class AddProductServlet extends HttpServlet {
         try {
             try (Connection c = DriverManager.getConnection(databaseUrl, user, password)) {
                 String sql = "INSERT INTO PRODUCT " +
-                        "(NAME, PRICE) VALUES (\"" + name + "\"," + price + ")";
+                        "(NAME, PRICE) VALUES ('" + name + "'," + price + ")";
                 Statement stmt = c.createStatement();
                 stmt.executeUpdate(sql);
                 stmt.close();
