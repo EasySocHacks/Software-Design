@@ -8,7 +8,7 @@ import java.io.PrintWriter;
 
 public class HTMLResponseUtils {
     private final @NotNull HttpServletResponse httpServletResponse;
-    private final @NotNull  PrintWriter printWriter;
+    private final @NotNull PrintWriter printWriter;
 
     public HTMLResponseUtils(@NotNull HttpServletResponse httpServletResponse) throws IOException {
         this.httpServletResponse = httpServletResponse;
