@@ -1,5 +1,6 @@
 package refactoring.servlet.get;
 
+import org.jetbrains.annotations.NotNull;
 import refactoring.servlet.AbstractServlet;
 import refactoring.utils.html.HTMLPageBuilder;
 
@@ -14,12 +15,12 @@ public class GetProductsServlet extends AbstractServlet {
         super();
     }
 
-    public GetProductsServlet(String databaseUrl, String user, String password) {
+    public GetProductsServlet(@NotNull String databaseUrl, @NotNull String user, @NotNull String password) {
         super(databaseUrl, user, password);
     }
 
     @Override
-    public void doGetMainLogic(HttpServletRequest request) throws Exception {
+    public void doGetMainLogic(@NotNull HttpServletRequest request) throws Exception {
         ResultSet resultSet = databaseUtils.getStatement().executeQuery("SELECT * FROM PRODUCT");
 
         HTMLPageBuilder htmlPageBuilder = new HTMLPageBuilder();

@@ -1,5 +1,6 @@
 package refactoring.servlet.query;
 
+import org.jetbrains.annotations.NotNull;
 import refactoring.servlet.AbstractServlet;
 
 import javax.servlet.http.HttpServletRequest;
@@ -14,12 +15,12 @@ public class QueryServlet extends AbstractServlet {
         super();
     }
 
-    public QueryServlet(String databaseUrl, String user, String password) {
+    public QueryServlet(@NotNull String databaseUrl, @NotNull String user, @NotNull String password) {
         super(databaseUrl, user, password);
     }
 
     @Override
-    public void doGetMainLogic(HttpServletRequest request) throws Exception {
+    public void doGetMainLogic(@NotNull HttpServletRequest request) throws Exception {
         String command = request.getParameter("command");
 
         switch (command) {

@@ -1,5 +1,6 @@
 package refactoring.servlet.add;
 
+import org.jetbrains.annotations.NotNull;
 import refactoring.servlet.AbstractServlet;
 
 import javax.servlet.http.HttpServletRequest;
@@ -12,12 +13,12 @@ public class AddProductServlet extends AbstractServlet {
         super();
     }
 
-    public AddProductServlet(String databaseUrl, String user, String password) {
+    public AddProductServlet(@NotNull String databaseUrl, @NotNull String user, @NotNull String password) {
         super(databaseUrl, user, password);
     }
 
     @Override
-    public void doGetMainLogic(HttpServletRequest request) throws Exception {
+    public void doGetMainLogic(@NotNull HttpServletRequest request) throws Exception {
         String name = request.getParameter("name");
         long price = Long.parseLong(request.getParameter("price"));
 

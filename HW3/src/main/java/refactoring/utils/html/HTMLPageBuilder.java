@@ -1,37 +1,39 @@
 package refactoring.utils.html;
 
+import org.jetbrains.annotations.NotNull;
+
 public class HTMLPageBuilder {
-    private final HTMLPage htmlPage;
+    private final @NotNull HTMLPage htmlPage;
 
     public HTMLPageBuilder() {
         htmlPage = new HTMLPage();
     }
 
-    public HTMLPageBuilder(HTMLPage htmlPage) {
+    public HTMLPageBuilder(@NotNull HTMLPage htmlPage) {
         this.htmlPage = htmlPage;
     }
 
-    public HTMLPageBuilder addLine(String line, Object... args) {
+    public @NotNull HTMLPageBuilder addLine(@NotNull String line, Object... args) {
         htmlPage.addLine(line, args);
         return new HTMLPageBuilder(htmlPage);
     }
 
-    public HTMLPageBuilder addBlock(String blockTag, String text, Object... args) {
+    public @NotNull HTMLPageBuilder addBlock(@NotNull String blockTag, @NotNull String text, Object... args) {
         htmlPage.addLine(String.format("<%s>%s</%s>", blockTag, text, blockTag), args);
         return new HTMLPageBuilder(htmlPage);
     }
 
-    public HTMLPageBuilder addLineWithBr(String line, Object... args) {
+    public @NotNull HTMLPageBuilder addLineWithBr(@NotNull String line, Object... args) {
         htmlPage.addLine(String.format("%s</br>", line), args);
         return new HTMLPageBuilder(htmlPage);
     }
 
-    public HTMLPageBuilder build() {
+    public @NotNull HTMLPageBuilder build() {
         htmlPage.add("</body></html>");
         return new HTMLPageBuilder(htmlPage);
     }
 
-    public HTMLPage getHtmlPage() {
+    public @NotNull HTMLPage getHtmlPage() {
         return htmlPage;
     }
 }

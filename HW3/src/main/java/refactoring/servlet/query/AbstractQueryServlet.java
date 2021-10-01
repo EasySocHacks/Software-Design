@@ -1,26 +1,27 @@
 package refactoring.servlet.query;
 
+import org.jetbrains.annotations.NotNull;
 import refactoring.utils.DatabaseUtils;
 import refactoring.utils.html.HTMLResponseUtils;
 
 import javax.servlet.http.HttpServletRequest;
 
 public abstract class AbstractQueryServlet {
-    private final DatabaseUtils databaseUtils;
-    private final HTMLResponseUtils htmlResponseUtils;
+    private final @NotNull DatabaseUtils databaseUtils;
+    private final @NotNull HTMLResponseUtils htmlResponseUtils;
 
-    public AbstractQueryServlet(DatabaseUtils databaseUtils, HTMLResponseUtils htmlResponseUtils) {
+    public AbstractQueryServlet(@NotNull DatabaseUtils databaseUtils, @NotNull HTMLResponseUtils htmlResponseUtils) {
         this.databaseUtils = databaseUtils;
         this.htmlResponseUtils = htmlResponseUtils;
     }
 
-    abstract void doMainLogic(HttpServletRequest request) throws Exception;
+    abstract void doMainLogic(@NotNull HttpServletRequest request) throws Exception;
 
-    public DatabaseUtils getDatabaseUtils() {
+    public @NotNull DatabaseUtils getDatabaseUtils() {
         return databaseUtils;
     }
 
-    public HTMLResponseUtils getHtmlResponseUtils() {
+    public @NotNull HTMLResponseUtils getHtmlResponseUtils() {
         return htmlResponseUtils;
     }
 }

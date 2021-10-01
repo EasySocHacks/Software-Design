@@ -1,5 +1,6 @@
 package refactoring.servlet.query;
 
+import org.jetbrains.annotations.NotNull;
 import refactoring.utils.DatabaseUtils;
 import refactoring.utils.html.HTMLPageBuilder;
 import refactoring.utils.html.HTMLResponseUtils;
@@ -8,12 +9,12 @@ import javax.servlet.http.HttpServletRequest;
 import java.sql.ResultSet;
 
 public class CountQueryServlet extends AbstractQueryServlet {
-    public CountQueryServlet(DatabaseUtils databaseUtils, HTMLResponseUtils htmlResponseUtils) {
+    public CountQueryServlet(@NotNull DatabaseUtils databaseUtils, @NotNull HTMLResponseUtils htmlResponseUtils) {
         super(databaseUtils, htmlResponseUtils);
     }
 
     @Override
-    void doMainLogic(HttpServletRequest request) throws Exception {
+    void doMainLogic(@NotNull HttpServletRequest request) throws Exception {
         ResultSet resultSet =
                 getDatabaseUtils().getStatement().executeQuery("SELECT COUNT(*) FROM PRODUCT");
 

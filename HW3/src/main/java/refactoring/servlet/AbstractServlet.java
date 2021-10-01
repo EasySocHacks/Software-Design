@@ -1,5 +1,6 @@
 package refactoring.servlet;
 
+import org.jetbrains.annotations.NotNull;
 import refactoring.utils.DatabaseUtils;
 import refactoring.utils.html.HTMLResponseUtils;
 
@@ -21,7 +22,7 @@ public abstract class AbstractServlet extends HttpServlet {
         }
     }
 
-    public AbstractServlet(String databaseUrl, String user, String password) {
+    public AbstractServlet(@NotNull String databaseUrl, @NotNull String user, @NotNull String password) {
         try {
             databaseUtils = new DatabaseUtils(databaseUrl, user, password);
         } catch (SQLException e) {
@@ -46,5 +47,5 @@ public abstract class AbstractServlet extends HttpServlet {
         }
     }
 
-    public abstract void doGetMainLogic(HttpServletRequest request) throws Exception;
+    public abstract void doGetMainLogic(@NotNull HttpServletRequest request) throws Exception;
 }
