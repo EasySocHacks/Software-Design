@@ -1,0 +1,24 @@
+.add-todo-list {
+    margin-bottom: 10px;
+    border: 1px solid black;
+    border-radius: 5px 5px 5px 5px;
+
+    background: #e7e7e7;
+    padding: 10px;
+}
+
+.add-todo-list-form {
+    width: 100%;
+    display: inline-flex;
+    align-content: center;
+    justify-content: space-between;
+}
+
+.add-todo-list-info {
+    margin-left: 30px;
+}
+
+.add-todo-list-submit {
+    margin-right: 30px;
+    right: 0;
+}
