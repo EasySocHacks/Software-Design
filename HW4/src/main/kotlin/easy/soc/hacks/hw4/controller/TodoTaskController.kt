@@ -54,7 +54,6 @@ class TodoTaskController {
                         "('${name}', '${description}');"
             )
         } catch (e: Exception) {
-            //TODO redirect somewhere else?
             return "redirect:"
         }
 
