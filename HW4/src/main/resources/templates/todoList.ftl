@@ -16,7 +16,13 @@
 
     <#if done>
         <div class="todo-list-element-done">
-            <h4 class="todo-list-element-name">${todoTaskList.name}</h4>
+            <div class="todo-list-element-name">
+                <h4 class="todo-list-element-name-title">${todoTaskList.name}</h4>
+                <form class="delete-todo-task-list" method="get" name="delete-todo-task-list" action="/deleteTodoList">
+                    <input type="submit" value="Delete">
+                    <input type="hidden" name="id" value="${todoTaskList.id}">
+                </form>
+            </div>
             <#list todoTaskList.todoTasks as todoTask>
                 <@element.todoTask todoTask=todoTask/>
             </#list>
@@ -34,7 +40,13 @@
         </div>
     <#else>
         <div class="todo-list-element">
-            <h4 class="todo-list-element-name">${todoTaskList.name}</h4>
+            <div class="todo-list-element-name">
+                <h4 class="todo-list-element-name-title">${todoTaskList.name}</h4>
+                <form class="delete-todo-task-list" method="get" name="delete-todo-task-list" action="/deleteTodoList">
+                    <input type="submit" value="Delete">
+                    <input type="hidden" name="id" value="${todoTaskList.id}">
+                </form>
+            </div>
             <#list todoTaskList.todoTasks as todoTask>
                 <@element.todoTask todoTask=todoTask/>
             </#list>

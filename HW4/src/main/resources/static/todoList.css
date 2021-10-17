@@ -19,7 +19,10 @@
 .todo-list-element-name {
     border-bottom: 2px solid black;
 
-    margin: 5px;
+    display: inline-flex;
+    width: 100%;
+    align-items: center;
+    justify-content: space-between;
 }
 
 .add-todo-task {
@@ -49,4 +52,13 @@
     margin-right: 30px;
 
     height: 25px;
+}
+
+.delete-todo-task-list {
+    right: 0;
+    margin-right: 30px;
+}
+
+.todo-list-element-name-title {
+    padding: 5px;
 }

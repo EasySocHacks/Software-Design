@@ -15,4 +15,16 @@ class TodoController {
 
         return "redirect:"
     }
+
+    @GetMapping("/deleteTodoList")
+    fun deleteTodoList(@RequestParam("id") id: Int): String {
+        DatabaseUtils.statement.executeUpdate(
+            "delete from TodoTaskList_TodoTask where todo_task_list_id = ${id};"
+        )
+        DatabaseUtils.statement.executeUpdate(
+            "delete from TodoTaskList where id = ${id};"
+        )
+
+        return "redirect:"
+    }
 }
