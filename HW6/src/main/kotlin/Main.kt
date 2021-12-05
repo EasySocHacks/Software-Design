@@ -6,7 +6,9 @@ import visitor.parser.state.ParserVisitorState
 import visitor.print.PrintVisitor
 
 fun main() {
-    val tokenizer = Tokenizer("1+2*(3 + 4) * 5452")
+    val expression = readLine()!!
+
+    val tokenizer = Tokenizer(expression)
     val tokens = tokenizer.tokenize()
 
     val parserState = ParserVisitorState()
@@ -20,6 +22,6 @@ fun main() {
     val calcVisitor = CalcVisitor
     calcVisitor.visit(parserState.getState().first.iterator(), calcState)
 
-    println()
+    print("= ")
     println(calcState.getState())
 }
