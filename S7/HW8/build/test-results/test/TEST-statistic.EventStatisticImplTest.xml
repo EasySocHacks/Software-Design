@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="statistic.EventStatisticImplTest" tests="10" skipped="0" failures="0" errors="0" timestamp="2021-12-09T19:01:23" hostname="easyhacks-G550JK" time="0.068">
+  <properties/>
+  <testcase name="getEventStatisticByName returns correct answer on in hour events()" classname="statistic.EventStatisticImplTest" time="0.031"/>
+  <testcase name="getAllEventStatistic returns empty on only ont in hour events()" classname="statistic.EventStatisticImplTest" time="0.005"/>
+  <testcase name="printStatistic prints nothing on none events()" classname="statistic.EventStatisticImplTest" time="0.002"/>
+  <testcase name="printStatistic prints each stat correct()" classname="statistic.EventStatisticImplTest" time="0.013"/>
+  <testcase name="getEventStatisticByName returns zero on none events()" classname="statistic.EventStatisticImplTest" time="0.001"/>
+  <testcase name="getAllEventStatistic returns empty on none events()" classname="statistic.EventStatisticImplTest" time="0.002"/>
+  <testcase name="incEvent returns false on a save date increment()" classname="statistic.EventStatisticImplTest" time="0.002"/>
+  <testcase name="incEvent returns true on a single increment()" classname="statistic.EventStatisticImplTest" time="0.001"/>
+  <testcase name="getAllEventStatistic returns correct answer on in hour events()" classname="statistic.EventStatisticImplTest" time="0.002"/>
+  <testcase name="getEventStatisticByName returns zero on only ont in hour events()" classname="statistic.EventStatisticImplTest" time="0.001"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
