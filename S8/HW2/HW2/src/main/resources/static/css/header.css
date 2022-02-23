@@ -1,0 +1,28 @@
+.top-header {
+    display: flex;
+    justify-content: flex-end;
+    border-bottom: 1px solid black;
+}
+
+.top-header-element {
+    margin: 10px;
+}
+
+.bottom-header {
+    display: flex;
+    justify-content: flex-start;
+    border-top: 1px solid black;
+}
+
+.bottom-header-element {
+    margin: 10px;
+}
+
+.error {
+    border: 1px solid black;
+    border-radius: 5px;
+    height: 100px;
+    background: red;
+    text-align: center;
+    font-size: 30px;
+}
