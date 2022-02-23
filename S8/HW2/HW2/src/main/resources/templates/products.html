@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>HW2</title>
+
+    <link rel="stylesheet" type="text/css" href="css/header.css">
+    <link rel="stylesheet" type="text/css" href="css/common.css">
+    <link rel="stylesheet" type="text/css" href="css/products.css">
+</head>
+<body>
+<div th:include="header :: template"></div>
+<div class="center-body">
+    <h1>Products</h1>
+    <div th:if="${user} != null" class="product-list-top">
+        <div>Name</div>
+        <div>Description</div>
+        <div th:text="'Price (' + ${user.currency} + ')'"></div>
+    </div>
+    <div class="product-list" th:each="product : ${products}">
+        <div class="product-list-element">
+            <div th:text="${product.name}"></div>
+            <div th:text="${product.description}"></div>
+            <div th:text="${#numbers.formatDecimal(product.price, 0, 'COMMA', 2, 'POINT')}"></div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
