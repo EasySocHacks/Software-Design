@@ -3,7 +3,6 @@ To run this project you can do it either with [docker](https://www.docker.com/) 
 <details>
 <summary>Docker</summary>
 
-From [root](/):
 * Execute ```docker-compose build```
 * Execute ```docker-compose up```
 
