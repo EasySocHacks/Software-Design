@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>HW2</title>
+
+    <link rel="stylesheet" type="text/css" href="css/header.css">
+    <link rel="stylesheet" type="text/css" href="css/common.css">
+</head>
+<body>
+<div th:include="header :: template"></div>
+<div class="center-body">
+    <h1>Register</h1>
+    <form action="/register" method="post">
+        <p>Login</p>
+        <input type="text" name="login">
+
+        <p>Password</p>
+        <input type="password" name="password">
+
+        <p>Currency</p>
+        <select name="currency">
+            <option>USD</option>
+            <option>RUB</option>
+            <option>EUR</option>
+        </select>
+        <br>
+        <button type="submit">Register</button>
+    </form>
+</div>
+</body>
+</html>

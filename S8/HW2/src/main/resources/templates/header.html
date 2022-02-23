@@ -1,0 +1,28 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<div th:fragment="template">
+    <th:block th:switch="${error}">
+        <div th:case="null"></div>
+        <div th:case="*" class="error" th:text="${error}"></div>
+    </th:block>
+    <header>
+        <th:block th:switch="${user}">
+            <div th:case="null">
+                <div class="top-header">
+                    <a class="top-header-element" href="/login">Login</a>
+                    <a class="top-header-element" href="/register">Register</a>
+                </div>
+            </div>
+            <div th:case="*">
+                <div class="top-header">
+                    <p class="top-header-element" th:text="${user.login}"></p>
+                    <a class="top-header-element" href="/logout">Logout</a>
+                </div>
+            </div>
+        </th:block>
+        <div class="bottom-header">
+            <a class="bottom-header-element" href="/">Index</a>
+            <a class="bottom-header-element" href="/products">Products</a>
+            <a class="bottom-header-element" href="/addProduct">Add product</a>
+        </div>
+    </header>
+</div>
